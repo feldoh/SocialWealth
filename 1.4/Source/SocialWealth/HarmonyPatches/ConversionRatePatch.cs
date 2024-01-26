@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Reflection.Emit;
 using HarmonyLib;
 using RimWorld;
@@ -14,10 +13,8 @@ public static class ExtraLabelMouseAttachmentTranspiler
 {
     public static IEnumerable<CodeInstruction> Transpiler(IEnumerable<CodeInstruction> instructions)
     {
-        List<CodeInstruction> codes = [..instructions];
-        List<CodeInstruction> newCodes = [];
         bool found = false;
-        foreach (CodeInstruction t in codes)
+        foreach (CodeInstruction t in instructions)
         {
             switch (found)
             {
@@ -26,20 +23,18 @@ public static class ExtraLabelMouseAttachmentTranspiler
                     typeof(float)
                 })):
                     found = true;
-                    newCodes.Add(new CodeInstruction(OpCodes.Call, AccessTools.Method(typeof(ExtraLabelMouseAttachmentTranspiler), nameof(GetWealthAdjustedCertaintyReduction))));
+                    yield return new CodeInstruction(OpCodes.Call, AccessTools.Method(typeof(ExtraLabelMouseAttachmentTranspiler), nameof(GetWealthAdjustedCertaintyReduction)));
                     break;
                 case true when t.opcode == OpCodes.Ret:
-                    newCodes.Add(new CodeInstruction(OpCodes.Call,
-                        AccessTools.Method(typeof(ExtraLabelMouseAttachmentTranspiler), nameof(AppendWealthAdjustedCertaintyReduction))));
-                    newCodes.Add(new CodeInstruction(OpCodes.Ret));
+                    yield return new CodeInstruction(OpCodes.Call,
+                        AccessTools.Method(typeof(ExtraLabelMouseAttachmentTranspiler), nameof(AppendWealthAdjustedCertaintyReduction)));
+                    yield return new CodeInstruction(OpCodes.Ret);
                     break;
                 default:
-                    newCodes.Add(t);
+                    yield return t;
                     break;
             }
         }
-
-        return newCodes.AsEnumerable();
     }
 
     public static string GetWealthAdjustedCertaintyReduction(float originalValue)
@@ -61,16 +56,13 @@ public static class ExtraLabelMouseAttachmentTranspiler
     }
 }
 
-
 [HarmonyPatch(typeof(Pawn_IdeoTracker), "IdeoConversionAttempt")]
 public static class IdeoConversionAttemptTranspiler
 {
     public static IEnumerable<CodeInstruction> Transpiler(IEnumerable<CodeInstruction> instructions)
     {
-        List<CodeInstruction> codes = [..instructions];
-        List<CodeInstruction> newCodes = [];
         int callCount = 0;
-        foreach (CodeInstruction t in codes)
+        foreach (CodeInstruction t in instructions)
         {
             if (t.Calls(AccessTools.Method(typeof(GenText), nameof(GenText.ToStringPercent), new[]
                 {
@@ -81,16 +73,16 @@ public static class IdeoConversionAttemptTranspiler
                 switch (callCount)
                 {
                     case 2:
-                        newCodes.Add(new CodeInstruction(OpCodes.Ldarg_0));
-                        newCodes.Add(new CodeInstruction(OpCodes.Call, AccessTools.PropertyGetter(typeof(Pawn_IdeoTracker), nameof(Pawn_IdeoTracker.Certainty))));
-                        newCodes.Add(new CodeInstruction(OpCodes.Call, AccessTools.Method(typeof(IdeoConversionAttemptTranspiler), nameof(GetWealthAdjustedCertaintyReducedToValue))));
+                        yield return new CodeInstruction(OpCodes.Ldarg_0);
+                        yield return new CodeInstruction(OpCodes.Call, AccessTools.PropertyGetter(typeof(Pawn_IdeoTracker), nameof(Pawn_IdeoTracker.Certainty)));
+                        yield return new CodeInstruction(OpCodes.Call,
+                            AccessTools.Method(typeof(IdeoConversionAttemptTranspiler), nameof(GetWealthAdjustedCertaintyReducedToValue)));
                         break;
                 }
             }
-            newCodes.Add(t);
-        }
 
-        return newCodes.AsEnumerable();
+            yield return t;
+        }
     }
 
     public static float GetWealthAdjustedCertaintyReducedToValue(float newValue, float originalValue)
@@ -100,7 +92,6 @@ public static class IdeoConversionAttemptTranspiler
         // We know this is an attempt to reduce certainty, and they must be not our ideo so we always want to multiply
         return originalValue - diff * ExtraLabelMouseAttachmentTranspiler.GetCertaintyChangeMultiplier();
     }
-
 }
 
 [HarmonyPatch(typeof(Pawn_IdeoTracker), nameof(Pawn_IdeoTracker.Certainty), MethodType.Setter)]
