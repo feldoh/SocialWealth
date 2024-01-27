@@ -46,7 +46,7 @@ public static class ExtraLabelMouseAttachmentTranspiler
 
     public static float GetCertaintyChangeMultiplier()
     {
-        return Find.CurrentMap.wealthWatcher.WealthTotal / SocialWealthMod.settings.neutralWealth;
+        return Find.CurrentMap.wealthWatcher.WealthTotal / SocialWealthMod.settings.NeutralWealth;
     }
 
     public static string AppendWealthAdjustedCertaintyReduction(string s)
@@ -101,7 +101,7 @@ public static class CertaintyPrefix
     {
         float currentCertainty = __instance.Certainty;
         float certaintyDiff = currentCertainty - value;
-        if (!___pawn.Spawned || Math.Abs(certaintyDiff) < SocialWealthMod.settings.changeThreshold) return true;
+        if (!___pawn.Spawned || Math.Abs(certaintyDiff) < SocialWealthMod.settings.ChangeThreshold) return true;
 
         // Calculate the scaling factor based on the colony's wealth
         float scalingFactor = ExtraLabelMouseAttachmentTranspiler.GetCertaintyChangeMultiplier();

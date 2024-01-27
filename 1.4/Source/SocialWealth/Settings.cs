@@ -1,15 +1,23 @@
-﻿using UnityEngine;
+﻿using System.Globalization;
+using UnityEngine;
 using Verse;
 
 namespace SocialWealth;
 
 public class Settings : ModSettings
 {
-    //Use Mod.settings.setting to refer to this setting.
-    public float neutralWealth = 100000f;
-    public float changeThreshold = 0.05f;
+    public const float _defaultNaturalWealth = 100000f;
+    public const float _defaultChangeThreshold = 0.05f;
+
+    private float neutralWealth = -1f;
+    private float changeThreshold = -1f;
     public string neutralWealthBuffer = "";
     public string changeThresholdBuffer = "";
+
+    public float NeutralWealth => neutralWealth <= 0f ? _defaultNaturalWealth : neutralWealth;
+    public float ChangeThreshold => changeThreshold <= 0f ? _defaultChangeThreshold : changeThreshold;
+
+    public float WealthFactor(Map map) => (map ?? Find.AnyPlayerHomeMap).wealthWatcher.WealthTotal / NeutralWealth;
 
     public void DoWindowContents(Rect wrect)
     {
@@ -25,7 +33,13 @@ public class Settings : ModSettings
     
     public override void ExposeData()
     {
-        Scribe_Values.Look(ref neutralWealth, "neutralWealth", 100000);
-        Scribe_Values.Look(ref changeThreshold, "changeThreshold", 0.05f);
+        Scribe_Values.Look(ref neutralWealth, "neutralWealth", _defaultNaturalWealth);
+        Scribe_Values.Look(ref changeThreshold, "changeThreshold", _defaultChangeThreshold);
+
+        if (Scribe.mode != LoadSaveMode.PostLoadInit) return;
+        neutralWealthBuffer = NeutralWealth.ToString(CultureInfo.InvariantCulture);
+        changeThresholdBuffer = ChangeThreshold.ToString(CultureInfo.InvariantCulture);
+        if (neutralWealth <= 0f) neutralWealth = _defaultNaturalWealth;
+        if (changeThreshold <= 0f) changeThreshold = _defaultChangeThreshold;
     }
 }
