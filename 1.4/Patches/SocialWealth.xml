@@ -1,4 +1,17 @@
-<?xml version="1.0" encoding="utf-8" ?>
-<Patch>
+<?xml version="1.0" encoding="utf-8"?>
 
+<Patch>
+    <Operation Class="PatchOperationAdd">
+        <xpath>/Defs/StorytellerDef[@Name="BaseStoryteller"]/comps</xpath>
+        <value>
+            <li Class="StorytellerCompProperties_FactionInteraction">
+                <incident>SocialWealth_GiveQuest_Hospitality_Tourist</incident>
+                <baseIncidentsPerYear>1</baseIncidentsPerYear>
+                <minSpacingDays>20</minSpacingDays>
+                <minDanger>None</minDanger>
+                <fullAlliesOnly>false</fullAlliesOnly>
+                <minWealth>350000</minWealth>
+            </li>
+        </value>
+    </Operation>
 </Patch>
