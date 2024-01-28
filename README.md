@@ -8,7 +8,13 @@
 
 # SocialWealth
 
-A small mod to allow some pawns to be impressed by colony wealth
+A small mod to allow some pawns to be impressed by colony wealth.
+
+## Features
+* Any ideology certainty adjustment is affected by colony wealth.
+* Some stats (Trade price adjustment, social impact, etc) are affected by colony wealth.
+* Wealth issue for Ideologies, gives mood adjustments based on colony wealth.
+* If your colony is rich enough you'll get tourists who can offer a purely pacifist way to get Relic information.
 
 ## Disclaimer
 Portions of the materials used to create this content/mod are trademarks and/or copyrighted works of Ludeon Studios Inc. All rights reserved by Ludeon. This content/mod is not official and is not endorsed by Ludeon.
