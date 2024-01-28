@@ -1,10 +1,8 @@
 <p>
-  <a href="https://steamcommunity.com/sharedfiles/filedetails/?id=YOUR_WORKSHOP_ITEM_ID" alt="Steam Workshop Link">
-  <img src="https://img.shields.io/static/v1?label=Steam&message=Workshop&color=blue&logo=steam&link=https://steamcommunity.com/sharedfiles/filedetails/?id=YOUR_WORKSHOP_ITEM_ID"/>
+  <a href="https://steamcommunity.com/sharedfiles/filedetails/?id=3148727084">
+  <img src="https://img.shields.io/static/v1?label=Steam&message=Workshop&color=blue&logo=steam&link=https://steamcommunity.com/sharedfiles/filedetails/?id=3148727084" alt="Steam Workshop Link"/>
   </a>
 </p>
-
-# Please Remember to replace the YOUR_WORKSHOP_ITEM_ID placeholder once you upload your mod and have an id and remove this line.
 
 # SocialWealth
 

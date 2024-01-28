@@ -52,7 +52,7 @@
         </value>
     </Operation>
 
-    <!-- Add SocialWealth.StatPart_Wealth to SuppressionPower -->
+    <!-- Add SocialWealth.StatPart_Wealth to TradePriceImprovement -->
     <Operation Class="PatchOperationConditional">
         <xpath>/Defs/StatDef[defName="TradePriceImprovement"]/parts</xpath>
         <nomatch Class="PatchOperationAdd">
@@ -75,32 +75,6 @@
                         <li>(3, 0.5)</li>
                         <li>(5, 0.4)</li>
                         <li>(10, 0.2)</li>
-                    </points>
-                </curve>
-            </li>
-        </value>
-    </Operation>
-
-    <!-- Add SocialWealth.StatPart_Wealth to SuppressionPower -->
-    <Operation Class="PatchOperationConditional">
-        <xpath>/Defs/StatDef[defName="SuppressionPower"]/parts</xpath>
-        <nomatch Class="PatchOperationAdd">
-            <xpath>/Defs/StatDef[defName="SuppressionPower"]</xpath>
-            <value>
-                <parts />
-            </value>
-        </nomatch>
-    </Operation>
-
-    <Operation Class="PatchOperationAdd">
-        <xpath>/Defs/StatDef[defName="SuppressionPower"]/parts</xpath>
-        <value>
-            <li Class="SocialWealth.StatPart_Wealth">
-                <curve>
-                    <points>
-                        <li>(0, 1.1)</li>
-                        <li>(1, 0.8)</li>
-                        <li>(3, 0.6)</li>
                     </points>
                 </curve>
             </li>
