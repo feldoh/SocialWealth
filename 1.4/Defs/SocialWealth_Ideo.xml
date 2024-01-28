@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<Defs>
+    <IssueDef>
+        <defName>SocialWealth_Issue_Wealth</defName>
+        <label>wealth</label>
+        <iconPath>Things/Building/Misc/Reliquary/Reliquary_south</iconPath>
+    </IssueDef>
+
+    <PreceptDef>
+        <defName>SocialWealth_Wealth_Indifferent</defName>
+        <issue>SocialWealth_Issue_Wealth</issue>
+        <label>indifferent</label>
+        <description>Wealth shouldn't affect anything.</description>
+        <impact>Low</impact>
+    </PreceptDef>
+
+    <PreceptDef>
+        <defName>SocialWealth_Wealth_Critical</defName>
+        <issue>SocialWealth_Issue_Wealth</issue>
+        <label>demanded</label>
+        <description>What is life without wealth.</description>
+        <impact>Medium</impact>
+        <associatedMemes>
+            <li MayRequire="Ludeon.RimWorld.Ideology">Raider</li>
+        </associatedMemes>
+        <approvesOfCharity>false</approvesOfCharity>
+        <comps>
+            <li Class="PreceptComp_SituationalThought">
+                <thought>SocialWealth_Thought_Wealth_Good</thought>
+                <description>Wealth situation</description>
+                <tooltipShowMoodRange>true</tooltipShowMoodRange>
+                <thoughtStageDescriptions>
+                    <li>horrifically poor</li>
+                    <li>poor</li>
+                    <li>getting by</li>
+                    <li>wealthy</li>
+                    <li>very wealthy</li>
+                    <li>extremely wealthy</li>
+                </thoughtStageDescriptions>
+            </li>
+        </comps>
+    </PreceptDef>
+
+    <PreceptDef>
+        <defName>SocialWealth_Wealth_Hated</defName>
+        <issue>SocialWealth_Issue_Wealth</issue>
+        <label>awful</label>
+        <description>Wealth is evil, only by ridding ourselves of wealth can we be worthy.</description>
+        <impact>Medium</impact>
+        <conflictingMemes>
+            <li MayRequire="Ludeon.RimWorld.Ideology">Raider</li>
+        </conflictingMemes>
+        <approvesOfCharity>true</approvesOfCharity>
+        <comps>
+            <li Class="PreceptComp_SituationalThought">
+                <thought>SocialWealth_Thought_Wealth_Bad</thought>
+                <description>Wealth situation</description>
+                <tooltipShowMoodRange>true</tooltipShowMoodRange>
+                <thoughtStageDescriptions>
+                    <li>honourably poor</li>
+                    <li>paupers</li>
+                    <li>getting by</li>
+                    <li>unacceptable wealth</li>
+                    <li>awful wealth</li>
+                    <li>disgustingly wealthy</li>
+                </thoughtStageDescriptions>
+            </li>
+        </comps>
+    </PreceptDef>
+
+    <ThoughtDef>
+        <defName>SocialWealth_Thought_Wealth_Good</defName>
+        <replaceThoughts>
+            <li>SocialWealth_Thought_Wealth_Bad</li>
+        </replaceThoughts>
+        <stackLimit>1</stackLimit>
+        <thoughtClass>Thought_Situational</thoughtClass>
+        <workerClass>SocialWealth.ThoughtWorker_Precept_Wealth</workerClass>
+        <developmentalStageFilter>Adult</developmentalStageFilter>
+        <doNotApplyToQuestLodgers>true</doNotApplyToQuestLodgers>
+        <description>We should be as wealthy as possible.</description>
+        <label>Wealth</label>
+        <stages>
+            <li>
+                <label>very poor</label>
+                <description>We are disgustingly poor, we need to fix this!</description>
+                <baseMoodEffect>-5</baseMoodEffect>
+            </li>
+            <li>
+                <label>poor</label>
+                <description>We need to build up more wealth!</description>
+                <baseMoodEffect>-3</baseMoodEffect>
+            </li>
+            <li>
+                <label>okay</label>
+                <description>Well, I guess we're wealthy enough.</description>
+                <baseMoodEffect>0</baseMoodEffect>
+                <visible>false</visible>
+            </li>
+            <li>
+                <label>rich</label>
+                <baseMoodEffect>5</baseMoodEffect>
+                <description>The level of wealth we have is pleasing.</description>
+            </li>
+            <li>
+                <label>very rich</label>
+                <baseMoodEffect>10</baseMoodEffect>
+                <description>We're so wealthy, wow, what a feeling.</description>
+            </li>
+            <li>
+                <label>extremely rich</label>
+                <baseMoodEffect>20</baseMoodEffect>
+                <description>$$$</description>
+            </li>
+        </stages>
+        <nullifyingTraits><li>Ascetic</li></nullifyingTraits>
+    </ThoughtDef>
+
+    <ThoughtDef>
+        <defName>SocialWealth_Thought_Wealth_Bad</defName>
+        <replaceThoughts>
+            <li>SocialWealth_Thought_Wealth_Good</li>
+        </replaceThoughts>
+        <stackLimit>1</stackLimit>
+        <thoughtClass>Thought_Situational</thoughtClass>
+        <workerClass>SocialWealth.ThoughtWorker_Precept_Wealth_Inverted</workerClass>
+        <developmentalStageFilter>Adult</developmentalStageFilter>
+        <doNotApplyToQuestLodgers>true</doNotApplyToQuestLodgers>
+        <description>We should be free of wealth, it is a corruption.</description>
+        <label>Wealth</label>
+        <stages>
+            <li>
+                <label>destitute</label>
+                <baseMoodEffect>10</baseMoodEffect>
+                <description>We have no wealth to speak of, we are free of its corruption.</description>
+            </li>
+            <li>
+                <label>poor</label>
+                <baseMoodEffect>5</baseMoodEffect>
+                <description>We may be paupers but wealth only brings sadness.</description>
+            </li>
+            <li>
+                <label>okay</label>
+                <baseMoodEffect>0</baseMoodEffect>
+                <description>We're comfortable, though, I feel like we could be giving more.</description>
+                <visible>false</visible>
+            </li>
+            <li>
+                <label>wealthy</label>
+                <baseMoodEffect>-5</baseMoodEffect>
+                <description>Ugh, all this wealth is a corrupting influence, we should get rid of it.</description>
+            </li>
+            <li>
+                <label>too wealthy</label>
+                <baseMoodEffect>-10</baseMoodEffect>
+                <description>How do we have this much wealth, it's our moral obligation to share it!</description>
+            </li>
+            <li>
+                <label>disgustingly wealthy</label>
+                <baseMoodEffect>-20</baseMoodEffect>
+                <description>Nobody should have this much, I am disgusted with us.</description>
+            </li>
+        </stages>
+    </ThoughtDef>
+
+</Defs>
