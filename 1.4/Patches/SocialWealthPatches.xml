@@ -80,4 +80,11 @@
             </li>
         </value>
     </Operation>
+
+    <Operation Class="PatchOperationAdd">
+        <xpath>Defs/PreceptDef[defName="IdeoRole_Leader"]/grantedAbilities</xpath>
+        <value>
+            <li>SocialWealth_ConvertOrDie</li>
+        </value>
+    </Operation>
 </Patch>

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+    <SocialWealth_WealthConversionFactorDesc>Colony Wealth Factor</SocialWealth_WealthConversionFactorDesc>
+    <SocialWealth_Settings_NeutralWealth>Natural Wealth Factor</SocialWealth_Settings_NeutralWealth>
+    <SocialWealth_Settings_ChangeThreshold>Min Change Threshold Factor: {0}</SocialWealth_Settings_ChangeThreshold>
+    <SocialWealth_Settings_ChangeThreshold_Tip>Changes in ideo certainty below this fraction won't be wealth adjusted.\n\nThis is for performance as if set too low it happens on almost every tick\n\n0.01 is probably fine or even lower but simply adjust this up to have lower performance impact\n\nThe larger it is the fewer places wealth will affect ideo certainty.</SocialWealth_Settings_ChangeThreshold_Tip>
+    <SocialWealth_LetterJoinOfferText>{PAWN_nameDef} has been awed by the wealth of {MAP_definite}. {PAWN_pronoun} cannot stand the idea of going back to their boring life and wishes to join you permanently.</SocialWealth_LetterJoinOfferText>
+    <SocialWealth_SuccessRange>Threat Based Success Range: {0} - {1}</SocialWealth_SuccessRange>
+    <SocialWealth_AbilityIdeoConvertOrDieBreakdownLabel>Instant conversion chance: {0}</SocialWealth_AbilityIdeoConvertOrDieBreakdownLabel>
+    <SocialWealth_Settings_ConvertOrDieMinChance>Convert or Die Min Success Chance: {0}</SocialWealth_Settings_ConvertOrDieMinChance>
+    <SocialWealth_Settings_ConvertOrDieMinChance_Tip>Minimum chance of successful conversion, with their life on the line your chances should be better than 3 percent or whatever regardless of how poor your colony is.</SocialWealth_Settings_ConvertOrDieMinChance_Tip>
+    <SocialWealth_Settings_ConvertOrDieMaxChance>Convert or Die Max Success Chance: {0}</SocialWealth_Settings_ConvertOrDieMaxChance>
+    <SocialWealth_Settings_ConvertOrDieMaxChance_Tip>Minimum chance of successful conversion, this is to prevent late game colonies just using this as free guaranteed recruitment. Thematically some zealots would always rather go to their grave than change.\n\nThis isn't conversion it's coercion and should have a risk associated..</SocialWealth_Settings_ConvertOrDieMaxChance_Tip>
+</LanguageData>

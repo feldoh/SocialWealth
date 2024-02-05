@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<LanguageData>
-    <SocialWealth_WealthConversionFactorDesc>Colony Wealth Factor</SocialWealth_WealthConversionFactorDesc>
-    <SocialWealth_Settings_NeutralWealth>Natural Wealth Factor</SocialWealth_Settings_NeutralWealth>
-    <SocialWealth_Settings_ChangeThreshold>Min Change Threshold Factor: {0}</SocialWealth_Settings_ChangeThreshold>
-    <SocialWealth_Settings_ChangeThreshold_Tip>Changes in ideo certainty below this fraction won't be wealth adjusted.\n\nThis is for performance as if set too low it happens on almost every tick\n\n0.01 is probably fine or even lower but simply adjust this up to have lower performance impact\n\nThe larger it is the fewer places wealth will affect ideo certainty.</SocialWealth_Settings_ChangeThreshold_Tip>
-    <SocialWealth_LetterJoinOfferText>{PAWN_nameDef} has been awed by the wealth of {MAP_definite}. {PAWN_pronoun} cannot stand the idea of going back to their boring life and wishes to join you permanently.</SocialWealth_LetterJoinOfferText>
-</LanguageData>

@@ -13,6 +13,7 @@ A small mod to allow some pawns to be impressed by colony wealth.
 * Some stats (Trade price adjustment, social impact, etc) are affected by colony wealth.
 * Wealth issue for Ideologies, gives mood adjustments based on colony wealth.
 * If your colony is rich enough you'll get tourists who can offer a purely pacifist way to get Relic information.
+* To balance the extra difficulty of recruitment early game, leaders can now attempt to coerce someone to convert. This however will result in the target's death if the conversion is unsuccessful. Use with extreme caution!
 
 ## Disclaimer
 Portions of the materials used to create this content/mod are trademarks and/or copyrighted works of Ludeon Studios Inc. All rights reserved by Ludeon. This content/mod is not official and is not endorsed by Ludeon.

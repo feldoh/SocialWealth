@@ -37,11 +37,15 @@ public static class ExtraLabelMouseAttachmentTranspiler
         }
     }
 
-    public static string GetWealthAdjustedCertaintyReduction(float originalValue)
+    public static float ApplyWealthAdjustedCertaintyFactor(float originalValue)
     {
         // We know this is an attempt to reduce certainty, and they must be not our ideo so we always want to multiply
-        float certaintyChangeMultiplier = originalValue * GetCertaintyChangeMultiplier();
-        return certaintyChangeMultiplier.ToStringPercent();
+        return originalValue * GetCertaintyChangeMultiplier();
+    }
+
+    public static string GetWealthAdjustedCertaintyReduction(float originalValue)
+    {
+        return ApplyWealthAdjustedCertaintyFactor(originalValue).ToStringPercent();
     }
 
     public static float GetCertaintyChangeMultiplier()

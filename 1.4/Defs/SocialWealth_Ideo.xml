@@ -114,7 +114,9 @@
                 <description>$$$</description>
             </li>
         </stages>
-        <nullifyingTraits><li>Ascetic</li></nullifyingTraits>
+        <nullifyingTraits>
+            <li>Ascetic</li>
+        </nullifyingTraits>
     </ThoughtDef>
 
     <ThoughtDef>
@@ -163,5 +165,70 @@
             </li>
         </stages>
     </ThoughtDef>
+
+
+    <AbilityDef>
+        <defName>SocialWealth_ConvertOrDie</defName>
+        <label>convert or die</label>
+        <description>Threaten someone with death to force them to join your ideoligion. They will either convert or be killed immediately.</description>
+        <groupDef>Leader</groupDef>
+        <iconPath>UI/Abilities/Convert</iconPath>
+        <warmupMoteSocialSymbol>Things/Mote/SpeechSymbols/Convert</warmupMoteSocialSymbol>
+        <warmupSound>MoralistAbility_Warmup</warmupSound>
+        <jobDef>CastAbilityOnThingMelee</jobDef>
+        <stunTargetWhileCasting>True</stunTargetWhileCasting>
+        <showPsycastEffects>False</showPsycastEffects>
+        <displayGizmoWhileUndrafted>True</displayGizmoWhileUndrafted>
+        <disableGizmoWhileUndrafted>False</disableGizmoWhileUndrafted>
+        <uiOrder>1</uiOrder>
+        <showWhenDrafted>false</showWhenDrafted>
+        <hostile>true</hostile>
+        <comps>
+            <li Class="SocialWealth.CompProperties_AbilityConvertOrDie">
+                <successMessage>With the power of motivation, {INITIATOR_labelShort} has converted {RECIPIENT_labelShort} to {IDEO}.</successMessage>
+                <failMessage>{INITIATOR_labelShort} offered {RECIPIENT_labelShort} the choice to convert or die, they chose the latter.</failMessage>
+                <failedThoughtInitiator>FailedConvertAbilityInitiator</failedThoughtInitiator>
+                <convertPowerFactor>6</convertPowerFactor>
+                <sound>MoralistAbility_Resolve</sound>
+            </li>
+            <li Class="CompProperties_AbilityMustBeCapableOf">
+                <workTags>
+                    <li>Social</li>
+                    <li>Violent</li>
+                </workTags>
+            </li>
+            <li Class="CompProperties_AbilityShowTargetIdeoCertainty" />
+        </comps>
+        <verbProperties>
+            <verbClass>Verb_CastAbilityTouch</verbClass>
+            <drawAimPie>False</drawAimPie>
+            <range>-1</range>
+            <warmupTime>3.0</warmupTime>
+            <targetParams>
+                <canTargetBuildings>False</canTargetBuildings>
+                <neverTargetHostileFaction>False</neverTargetHostileFaction>
+            </targetParams>
+        </verbProperties>
+    </AbilityDef>
+
+    <RulePackDef>
+        <defName>SocialWealth_Sentence_ConvertOrDie_Success</defName>
+        <rulePack>
+            <rulesStrings>
+                <li>sent->With [RECIPIENT_objective] life on the line [RECIPIENT_nameDef] agreed to change [RECIPIENT_objective] ways.</li>
+                <li>sent->With [INITIATOR_nameDef] providing extra motivation [RECIPIENT_nameDef] preferred to give up on [RECIPIENT_objective] beliefs instead of [RECIPIENT_objective] life.</li>
+            </rulesStrings>
+        </rulePack>
+    </RulePackDef>
+
+    <RulePackDef>
+        <defName>SocialWealth_Sentence_ConvertOrDie_Failure</defName>
+        <rulePack>
+            <rulesStrings>
+                <li>sent->Even with [RECIPIENT_objective] life on the line [RECIPIENT_nameDef] would not give up on [RECIPIENT_objective] beliefs.</li>
+                <li>sent->Despite [INITIATOR_nameDef] providing extra motivation [RECIPIENT_nameDef] preferred to die than give up on [RECIPIENT_objective] beliefs.</li>
+            </rulesStrings>
+        </rulePack>
+    </RulePackDef>
 
 </Defs>
