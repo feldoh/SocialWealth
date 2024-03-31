@@ -1,0 +1,208 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<Defs>
+    <QuestScriptDef>
+        <defName>SocialWealth_Hospitality_Tourist</defName>
+        <rootSelectionWeight>1.0</rootSelectionWeight>
+        <rootSelectionWeightFactorFromPointsCurve> <!-- More common at higher points values -->
+            <points>
+                <li>(0,0)</li>
+                <li>(2500,1)</li>
+                <li>(5000,2)</li>
+                <li>(10000,3)</li>
+            </points>
+        </rootSelectionWeightFactorFromPointsCurve>
+        <rootMinPoints>0</rootMinPoints>
+        <expireDaysRange>2~5</expireDaysRange>
+        <hideInvolvedFactionsInfo>true</hideInvolvedFactionsInfo>
+        <affectedByPopulation>false</affectedByPopulation>
+        <affectedByPoints>false</affectedByPoints>
+        <defaultCharity>false</defaultCharity>
+        <questNameRules>
+            <rulesStrings>
+
+                <!-- single -->
+                <li>questName(lodgerCount==1)->[asker_nameDef] the [lodgerAdj]</li>
+                <li>questName(lodgerCount==1)->[athe] [lodgerAdj] [lodgerSingle]</li>
+
+                <!-- multiple -->
+                <li>questName(p=2,lodgerCount>=2)->[lodgerAdj] [lodgerPlural]</li>
+                <li>questName(lodgerCount>=2)->[asker_nameDef]'s [lodgerAdj] [lodgerPlural]</li>
+                <li>questName(lodgerCount>=2)->[asker_nameDef]'s [lodgerPlural]</li>
+
+                <!-- pieces -->
+                <li>athe->a</li>
+                <li>athe->the</li>
+
+                <li>lodgerAdj->twitchy</li>
+                <li>lodgerAdj->excited</li>
+                <li>lodgerAdj->curious</li>
+                <li>lodgerAdj->wealthy</li>
+                <li>lodgerAdj->awed</li>
+                <li>lodgerAdj->poor</li>
+                <li>lodgerAdj->happy</li>
+                <li>lodgerAdj->distinguished</li>
+
+                <li>lodgerSingle->traveler</li>
+                <li>lodgerSingle->tourist</li>
+                <li>lodgerSingle->wanderer</li>
+                <li>lodgerSingle->visitor</li>
+                <li>lodgerPlural->travelers</li>
+                <li>lodgerPlural->tourists</li>
+                <li>lodgerPlural->wanderers</li>
+                <li>lodgerPlural->visitors</li>
+
+            </rulesStrings>
+        </questNameRules>
+        <questDescriptionAndNameRules>
+            <rulesStrings>
+                <li>lodgersLabel->tourist</li>
+                <li>lodgersLabelPlural->tourists</li>
+            </rulesStrings>
+        </questDescriptionAndNameRules>
+        <questDescriptionRules>
+            <rulesStrings>
+
+                <!-- Misc -->
+                <li>offer(lodgerCount==1)->offers</li>
+                <li>offer(lodgerCount>=2)->offer</li>
+
+                <!-- General use -->
+                <li>lodgersPronoun(lodgerCount==1)->[asker_pronoun]</li>
+                <li>lodgersPronoun(lodgerCount>=2)->they</li>
+                <li>lodgersPreposition(lodgerCount==1)->[asker_objective]self</li>
+                <li>lodgersPreposition(lodgerCount>=2)->themselves</li>
+                <li>lodgersObjective(lodgerCount==1)->[asker_objective]</li>
+                <li>lodgersObjective(lodgerCount>=2)->them</li>
+                <li>lodgersPossessive(lodgerCount==1)->[asker_possessive]</li>
+                <li>lodgersPossessive(lodgerCount>=2)->their</li>
+                <li>lodgersSingularOrPluralDef(lodgerCount==1)->[asker_nameDef]</li>
+                <li>lodgersSingularOrPluralDef(lodgerCount>=2)->the [lodgersLabelPlural]</li>
+
+                <!-- Quest description -->
+                <li>questDescription->[approachInfo] [claimInfo] [asker_nameDef] has heard tales of the wealth of [map_definite] and requests permission to visit for [questDurationTicks_duration] so [lodgersPronoun] can soak in the sites of such a wealthy settlement.\n\nFor this boon, [lodgersPronoun] [offer] to work and fight for free during their visit.\n\n[travelerInfo] not part of any faction. If you wish, you can choose to kill, arrest, sell, or harvest [lodgersObjective], without diplomatic consequences.</li>
+                <li>approachInfo(lodgerCount==1)->An awed [lodgersLabel] named [asker_nameDef] is approaching.</li>
+                <li>approachInfo(lodgerCount==2)->[asker_nameDef] and another awestruck [lodgersLabel] are approaching.</li>
+                <li>approachInfo(lodgerCount==2,childCount==1,priority=1)->[asker_nameDef] is approaching with a child in tow.</li>
+                <li>approachInfo(lodgerCount>=3)->[lodgerCount] [lodgersLabelPlural] are approaching. Their leader is called [asker_nameDef].</li>
+                <li>approachInfo(lodgerCount>=3,childCount==1,priority=1)->[lodgerCount] road-worn [lodgersLabelPlural] including a child are approaching. Their leader is called [asker_nameDef].</li>
+                <li>approachInfo(lodgerCount>=3,childCount>=2,priority=1)->A party of [lodgerCount] [lodgersLabelPlural] including some clearly awed children are approaching. Their leader is called [asker_nameDef].</li>
+                <li>approachInfo(lodgerCount>=3,allButOneChildren==true,priority=2)->A group of [lodgerCount] excited [lodgersLabelPlural] are approaching consisting of [asker_nameDef] and [lodgersCountMinusOne] children [asker_pronoun] seems to be leading on an educational trip.</li>
+                <li>claimInfo(lodgerCount==1)->[asker_nameDef] claims to have left [asker_possessive] home to explore the Rim.</li>
+                <li>claimInfo(lodgerCount==1)->[asker_nameDef] claims to woken up from cryptosleep and is now excited to explore the wonder of the new nations that have arisen.</li>
+                <li>claimInfo(lodgerCount==1)->[asker_nameDef] claims to be on a tour of magnificent places.</li>
+                <li>claimInfo(lodgerCount==1)->[asker_nameDef] claims to be on holiday.</li>
+                <li>claimInfo(lodgerCount==1)->[asker_nameDef] claims to be on their gap year.</li>
+                <li>claimInfo(lodgerCount>=2)->They claim to have left their home to explore the Rim.</li>
+                <li>claimInfo(lodgerCount>=2)->They claim to have heard of [map_definite] in a tavern and immediately agreed they must see it for themselves.</li>
+                <li>claimInfo(lodgerCount>=2)->They say they just had to see the opulence of [map_definite] for themselves.</li>
+                <li>claimInfo(lodgerCount>=2)->They say that they're part of a tour group.</li>
+                <li>claimInfo(lodgerCount>=2)->They say they are on holiday.</li>
+                <li>claimInfo(lodgerCount>=2)->They say they're on a gap year.</li>
+                <li>claimInfo(lodgerCount>=2)->They say they were inspired to travel after seeing a marvelous city whilst trading.</li>
+                <li>joinInfo(lodgerCount==1)->If you make [asker_objective] happy, [asker_pronoun] may beg to stay.</li>
+                <li>joinInfo(lodgerCount>=2)->If you make them happy, some of them may wish to join you permanently.</li>
+                <li>travelerInfo(lodgerCount==1)->This [lodgersLabel] is</li>
+                <li>travelerInfo(lodgerCount>=2)->These [lodgersLabelPlural] are</li>
+
+            </rulesStrings>
+        </questDescriptionRules>
+        <questContentRules>
+            <rulesStrings>
+
+                <!-- Misc -->
+                <li>lastOrNot(lodgerCount==1)-></li>
+                <li>lastOrNot(lodgerCount>=2)->last</li>
+                <li>lodgersLabelSingularOrPlural(lodgerCount==1)->[lodgersLabel]</li>
+                <li>lodgersLabelSingularOrPlural(lodgerCount>=2)->[lodgersLabelPlural]</li>
+
+                <!-- Arrived -->
+                <li>lodgersArriveLetterLabel->[lodgersLabelSingularOrPlural] arrived</li>
+                <li>lodgersArriveLetterText->[lodgersSingularOrPluralDef] [hasHave] arrived, their eyes alight as they gaze around in wonder. [lodgersPronoun] will stay with you for [questDurationTicks_duration] so [lodgersPronoun] can soak in the sights and culture.</li>
+                <li>hasHave(lodgerCount==1)->has</li>
+                <li>hasHave(lodgerCount>=2)->have</li>
+
+                <!-- No lodger action -->
+                <li>appalledButNoAction->The {PAWNSALIVECOUNT_multiple ? others seem : last [lodgersLabel] is} appalled at this, but {PAWNSALIVECOUNT_multiple ? are: is} not taking action against you.</li>
+
+                <!-- Lodger action -->
+                <li>othersWillNotAccept->The {PAWNSALIVECOUNT_multiple ? others are : last [lodgersLabel] is} not willing to accept this</li>
+                <li>turnedViolent->[othersWillNotAccept], and {PAWNSALIVECOUNT_multiple ? have : has } turned violently against you.</li>
+                <li>decidedToLeave->[othersWillNotAccept], and {PAWNSALIVECOUNT_multiple ? have : has } decided to leave.</li>
+
+                <li>whoAskedToStay->who asked to stay with you</li>
+                <li>oneOfThe->one of the [lodgersLabelSingularOrPlural] who asked to stay with you</li>
+                <li>questOver->The quest '[resolvedQuestName]' is over.</li>
+
+                <!-- Interaction response: Lodger death -->
+                <li>letterIntroDeath->{SUBJECT_definite}, [oneOfThe] has died.</li>
+
+                <li>lodgerDiedMemoryThoughtLetterLabel->[lodgersLabel] died: Anger</li>
+                <li>lodgerDiedMemoryThoughtLetterText->[letterIntroDeath]\n\n[appalledButNoAction]</li>
+
+                <li>lodgerDiedAttackPlayerLetterLabel->[lodgersLabel] died: Revenge</li>
+                <li>lodgerDiedAttackPlayerLetterText->[letterIntroDeath]\n\n[turnedViolent]</li>
+
+                <li>lodgerDiedLeaveMapLetterLabel->[lodgersLabel] died: Departure</li>
+                <li>lodgerDiedLeaveMapLetterText->[letterIntroDeath]\n\n[decidedToLeave]</li>
+
+                <li>lodgersAllDiedLetterLabel->Quest failed</li>
+                <li>lodgersAllDiedLetterText->{SUBJECT_definite}, the [lastOrNot] [lodgersLabelSingularOrPlural] [whoAskedToStay], has died.\n\n[questOver]</li>
+
+                <!-- Interaction response: Lodger arrested -->
+                <li>letterIntroArrested->You arrested {SUBJECT_definite}, [oneOfThe].</li>
+
+                <li>lodgerArrestedMemoryThoughtLetterLabel->[lodgersLabel] arrested: Anger</li>
+                <li>lodgerArrestedMemoryThoughtLetterText->[letterIntroArrested]\n\n[appalledButNoAction]</li>
+
+                <li>lodgerArrestedAttackPlayerLetterLabel->[lodgersLabel] arrested: Revenge</li>
+                <li>lodgerArrestedAttackPlayerLetterText->[letterIntroArrested]\n\n[turnedViolent]</li>
+
+                <li>lodgerArrestedLeaveMapLetterLabel->[lodgersLabel] arrested: Departure</li>
+                <li>lodgerArrestedLeaveMapLetterText->[letterIntroArrested]\n\n[decidedToLeave]</li>
+
+                <li>lodgersAllArrestedLetterLabel->Quest failed</li>
+                <li>lodgersAllArrestedLetterText->You arrested {SUBJECT_definite}, the [lastOrNot] [lodgersLabelSingularOrPlural] [whoAskedToStay].\n\n[questOver]</li>
+
+                <!-- Interaction response: Lodger violated by surgery -->
+                <li>letterIntroViolated->{SUBJECT_definite}, [oneOfThe], was violated by surgery.</li>
+
+                <li>lodgerViolatedMemoryThoughtLetterLabel->[lodgersLabel] violated: Anger</li>
+                <li>lodgerViolatedMemoryThoughtLetterText->[letterIntroViolated]\n\n[appalledButNoAction]</li>
+
+                <li>lodgerViolatedAttackPlayerLetterLabel->[lodgersLabel] violated: Revenge</li>
+                <li>lodgerViolatedAttackPlayerLetterText->[letterIntroViolated]\n\n[turnedViolent]</li>
+
+                <li>lodgerViolatedLeaveMapLetterLabel->[lodgersLabel] arrested: Departure</li>
+                <li>lodgerViolatedLeaveMapLetterText->[letterIntroViolated]\n\n[decidedToLeave]</li>
+
+                <!-- Mid-Events: Betrayal -->
+                <li>mutinyLetterLabel->Betrayal</li>
+                <li>mutinyLetterText->Driven by greed [lodgersSingularOrPluralDef] [whoAskedToStay] [areIs] turning against you!\n\nIt seems [lodgersPronoun] want your wealth for themselves.</li>
+                <li>areIs(lodgerCount==1)->is</li>
+                <li>areIs(lodgerCount>=2)->are</li>
+
+                <!-- Quest completed -->
+                <li>lodgersLeavingLetterLabel->[lodgersLabelSingularOrPlural] leaving</li>
+                <li>lodgersLeavingLetterText->{FACTION_leaderNameDef} thanks you for allowing {FACTION_leaderObjective} to stay at [map_definite] for these [questDurationTicks_duration]. {FACTION_leaderPronoun} is now moving on with {FACTION_leaderPossessive} people.\n\n{FACTION_leaderNameDef} says {FACTION_leaderPronoun} will remember this trip for the rest of {FACTION_leaderObjective} days.</li>
+
+            </rulesStrings>
+        </questContentRules>
+        <root Class="SocialWealth.QuestNode_Root_Hospitality_Tourist" />
+    </QuestScriptDef>
+
+    <IncidentDef>
+        <defName>SocialWealth_GiveQuest_Hospitality_Tourist</defName>
+        <category>GiveQuest</category>
+        <label>tourists arrive</label>
+        <targetTags>
+            <li>Map_PlayerHome</li>
+        </targetTags>
+        <letterLabel>tourists arrive</letterLabel>
+        <questScriptDef>SocialWealth_Hospitality_Tourist</questScriptDef>
+        <workerClass>IncidentWorker_GiveQuest</workerClass>
+        <baseChance>1</baseChance>
+        <requireColonistsPresent>True</requireColonistsPresent>
+        <populationEffect>IncreaseEasy</populationEffect>
+    </IncidentDef>
+</Defs>

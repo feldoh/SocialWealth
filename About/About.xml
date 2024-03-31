@@ -4,6 +4,7 @@
     <author>feldoh</author>
     <supportedVersions>
         <li>1.4</li>
+        <li>1.5</li>
     </supportedVersions>
     <packageId>feldoh.SocialWealth</packageId>
     <description>A small mod to allow some pawns to be impressed by colony wealth</description>
