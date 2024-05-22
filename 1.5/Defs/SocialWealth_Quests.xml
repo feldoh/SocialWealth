@@ -191,18 +191,4 @@
         <root Class="SocialWealth.QuestNode_Root_Hospitality_Tourist" />
     </QuestScriptDef>
 
-    <IncidentDef>
-        <defName>SocialWealth_GiveQuest_Hospitality_Tourist</defName>
-        <category>GiveQuest</category>
-        <label>tourists arrive</label>
-        <targetTags>
-            <li>Map_PlayerHome</li>
-        </targetTags>
-        <letterLabel>tourists arrive</letterLabel>
-        <questScriptDef>SocialWealth_Hospitality_Tourist</questScriptDef>
-        <workerClass>IncidentWorker_GiveQuest</workerClass>
-        <baseChance>1</baseChance>
-        <requireColonistsPresent>True</requireColonistsPresent>
-        <populationEffect>IncreaseEasy</populationEffect>
-    </IncidentDef>
 </Defs>

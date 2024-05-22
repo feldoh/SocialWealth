@@ -1,21 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <Patch>
-    <!-- Add tourist quest to base storyteller -->
-    <Operation Class="PatchOperationAdd">
-        <xpath>/Defs/StorytellerDef[@Name="BaseStoryteller"]/comps</xpath>
-        <value>
-            <li Class="StorytellerCompProperties_FactionInteraction">
-                <incident>SocialWealth_GiveQuest_Hospitality_Tourist</incident>
-                <baseIncidentsPerYear>1</baseIncidentsPerYear>
-                <minSpacingDays>20</minSpacingDays>
-                <minDanger>None</minDanger>
-                <fullAlliesOnly>false</fullAlliesOnly>
-                <minWealth>350000</minWealth>
-            </li>
-        </value>
-    </Operation>
-
     <!-- Add SocialImpact.StatPart_Wealth to SocialImpact -->
     <Operation Class="PatchOperationConditional">
         <xpath>/Defs/StatDef[defName="SocialImpact"]/parts</xpath>
@@ -52,6 +37,15 @@
         </value>
     </Operation>
 
+    <Operation Class="PatchOperationAdd">
+        <xpath>/Defs/StatDef[defName="RangedWeapon_DamageMultiplier"]/parts</xpath>
+        <value>
+            <li Class="SocialWealth.StatPart_Wealth">
+                <allowForNonPlayer>true</allowForNonPlayer>
+            </li>
+        </value>
+    </Operation>
+
     <!-- Add SocialWealth.StatPart_Wealth to TradePriceImprovement -->
     <Operation Class="PatchOperationConditional">
         <xpath>/Defs/StatDef[defName="TradePriceImprovement"]/parts</xpath>
@@ -81,10 +75,13 @@
         </value>
     </Operation>
 
-    <Operation Class="PatchOperationAdd">
+    <Operation Class="PatchOperationConditional">
         <xpath>Defs/PreceptDef[defName="IdeoRole_Leader"]/grantedAbilities</xpath>
-        <value>
-            <li>SocialWealth_ConvertOrDie</li>
-        </value>
+        <match Class="PatchOperationAdd">
+            <xpath>Defs/PreceptDef[defName="IdeoRole_Leader"]/grantedAbilities</xpath>
+            <value>
+                <li>SocialWealth_ConvertOrDie</li>
+            </value>
+        </match>
     </Operation>
 </Patch>

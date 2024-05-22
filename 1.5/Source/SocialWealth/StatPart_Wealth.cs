@@ -1,11 +1,14 @@
-﻿using RimWorld;
+﻿using System.Collections.Generic;
+using RimWorld;
 using Verse;
 
 namespace SocialWealth;
 
 public class StatPart_Wealth : StatPart
 {
-    private SimpleCurve curve;
+    private Dictionary<Def, SimpleCurve> defCurveCache = new();
+    public SimpleCurve curve;
+    public bool allowForNonPlayer;
 
     public SimpleCurve Curve => curve ??=
     [
@@ -17,21 +20,42 @@ public class StatPart_Wealth : StatPart
         new CurvePoint(16f, 4f)
     ];
 
+    public SimpleCurve CurveFor(Def def)
+    {
+        if (def is null) return Curve;
+        defCurveCache.TryGetValue(def, out SimpleCurve cachedCurve);
+        if (cachedCurve is not null) return cachedCurve;
+        cachedCurve = def.GetModExtension<CurveModExtension>() is { } modExt
+            ? modExt.curve
+            : Curve;
+        defCurveCache.Add(def, cachedCurve);
+
+        return cachedCurve;
+    }
+
+    public bool ShouldApply(StatRequest req) =>
+        allowForNonPlayer
+        || ((req.Pawn?.Faction ?? req.Thing?.Faction ?? (req.Thing?.holdingOwner?.Owner as Pawn)?.Faction)?.IsPlayer ?? false);
+
     public override void TransformValue(StatRequest req, ref float val)
     {
-        if (((req.Pawn ?? req.Thing as Pawn)?.Faction?.IsPlayer ?? false) && Find.AnyPlayerHomeMap is { } map)
-        {
-            val *= WealthMultiplier(req, map);
-        }
+        if (ShouldApply(req) && Find.AnyPlayerHomeMap is { } map) val *= WealthMultiplier(req, map);
     }
 
     public override string ExplanationPart(StatRequest req)
     {
-        return ((req.Pawn ?? req.Thing as Pawn)?.Faction?.IsPlayer ?? false) && Find.AnyPlayerHomeMap is { } map ? "Wealth: x" + WealthMultiplier(req, map).ToStringPercent() : "";
+        return ShouldApply(req) && Find.AnyPlayerHomeMap is { } map
+            ? "Wealth: x" + WealthMultiplier(req, map).ToStringPercent()
+            : "";
     }
 
-    private float WealthMultiplier(StatRequest req, Map map)
+    public float WealthMultiplierForDef(Def def, Map map)
     {
-        return Curve.Evaluate(SocialWealthMod.settings.WealthFactor(map));
+        return CurveFor(def).Evaluate(SocialWealthMod.settings.WealthFactor(map));
+    }
+
+    public float WealthMultiplier(StatRequest req, Map map)
+    {
+        return WealthMultiplierForDef(req.Def, map);
     }
 }

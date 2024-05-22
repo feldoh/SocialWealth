@@ -167,7 +167,7 @@
     </ThoughtDef>
 
 
-    <AbilityDef>
+    <AbilityDef MayRequire="Ludeon.RimWorld.Ideology">
         <defName>SocialWealth_ConvertOrDie</defName>
         <label>convert or die</label>
         <description>Threaten someone with death to force them to join your ideoligion. They will either convert or be killed immediately.</description>
