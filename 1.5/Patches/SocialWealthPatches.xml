@@ -40,9 +40,7 @@
     <Operation Class="PatchOperationAdd">
         <xpath>/Defs/StatDef[defName="RangedWeapon_DamageMultiplier"]/parts</xpath>
         <value>
-            <li Class="SocialWealth.StatPart_Wealth">
-                <allowForNonPlayer>true</allowForNonPlayer>
-            </li>
+            <li Class="SocialWealth.StatPart_Wealth" />
         </value>
     </Operation>
 

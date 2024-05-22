@@ -2,36 +2,6 @@
 
 <Defs>
 
-    <DamageDef Name="SocialWealth_Bullet" ParentName="Bullet">
-        <defName>SocialWealth_Bullet</defName>
-        <label>bullet</label>
-        <workerClass>SocialWealth.DamageWorker_AddInjury_Wealth_Linked</workerClass>
-        <externalViolence>true</externalViolence>
-        <deathMessage>{0} has been shot to death.</deathMessage>
-        <hediff>Gunshot</hediff>
-        <harmAllLayersUntilOutside>true</harmAllLayersUntilOutside>
-        <impactSoundType>Bullet</impactSoundType>
-        <armorCategory>Sharp</armorCategory>
-        <overkillPctToDestroyPart>0~0.7</overkillPctToDestroyPart>
-        <isRanged>true</isRanged>
-        <makesAnimalsFlee>true</makesAnimalsFlee>
-    </DamageDef>
-
-    <ThingDef ParentName="BaseBullet">
-        <defName>SocialWealth_Bullet_Revolver</defName>
-        <label>wealth-linked revolver bullet</label>
-        <graphicData>
-            <texPath>Things/Projectile/Bullet_Small</texPath>
-            <graphicClass>Graphic_Single</graphicClass>
-        </graphicData>
-        <projectile>
-            <damageDef>SocialWealth_Bullet</damageDef>
-            <damageAmountBase>12</damageAmountBase>
-            <stoppingPower>1</stoppingPower>
-            <speed>55</speed>
-        </projectile>
-    </ThingDef>
-
     <ThingDef ParentName="BaseHumanMakeableGun">
         <defName>SocialWealth_Gun_Revolver</defName>
         <label>wealth-link revolver</label>
@@ -75,7 +45,7 @@
             <li>
                 <verbClass>Verb_Shoot</verbClass>
                 <hasStandardCommand>true</hasStandardCommand>
-                <defaultProjectile>SocialWealth_Bullet_Revolver1e1</defaultProjectile>
+                <defaultProjectile>Bullet_Revolver</defaultProjectile>
                 <warmupTime>0.3</warmupTime>
                 <range>25.9</range>
                 <soundCast>Shot_Revolver</soundCast>

@@ -34,8 +34,10 @@ public class StatPart_Wealth : StatPart
     }
 
     public bool ShouldApply(StatRequest req) =>
-        allowForNonPlayer
-        || ((req.Pawn?.Faction ?? req.Thing?.Faction ?? (req.Thing?.holdingOwner?.Owner as Pawn)?.Faction)?.IsPlayer ?? false);
+        (req.Pawn?.Faction
+         ?? req.Thing?.Faction
+         ?? (req.Thing?.ParentHolder as Pawn_EquipmentTracker)?.pawn?.Faction)?.IsPlayer
+        ?? false;
 
     public override void TransformValue(StatRequest req, ref float val)
     {
