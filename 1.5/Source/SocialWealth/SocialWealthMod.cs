@@ -31,6 +31,6 @@ public class SocialWealthMod : Verse.Mod
 
     public override string SettingsCategory()
     {
-        return "SocialWealth";
+        return "SocialWealth_SettingsCategory".Translate();
     }
 }

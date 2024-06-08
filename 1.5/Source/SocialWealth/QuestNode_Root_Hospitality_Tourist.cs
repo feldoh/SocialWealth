@@ -141,32 +141,34 @@ public class QuestNode_Root_Hospitality_Tourist : QuestNode
                 result.Item2();
         }
 
-        QuestPart_RefugeeInteractions part = new();
-        part.inSignalEnable = QuestGen.slate.Get<string>("inSignal");
-        part.inSignalDestroyed = lodgersDestroyedSignal;
-        part.inSignalArrested = lodgersArrestedSignal;
-        part.inSignalSurgeryViolation = QuestGenUtility.HardcodedSignalWithQuestID("lodgers.SurgeryViolation");
-        part.inSignalKidnapped = lodgersKidnappedSignal;
-        part.inSignalRecruited = lodgerRecruitedSignal;
-        part.inSignalAssaultColony = assaultColonySignal;
-        part.inSignalLeftMap = lodgersLeftMapSignal;
-        part.inSignalBanished = lodgersBanished;
-        part.outSignalDestroyed_AssaultColony = QuestGen.GenerateNewSignal("LodgerDestroyed_AssaultColony");
-        part.outSignalDestroyed_LeaveColony = QuestGen.GenerateNewSignal("LodgerDestroyed_LeaveColony");
-        part.outSignalDestroyed_BadThought = QuestGen.GenerateNewSignal("LodgerDestroyed_BadThought");
-        part.outSignalArrested_AssaultColony = QuestGen.GenerateNewSignal("LodgerArrested_AssaultColony");
-        part.outSignalArrested_LeaveColony = QuestGen.GenerateNewSignal("LodgerArrested_LeaveColony");
-        part.outSignalArrested_BadThought = QuestGen.GenerateNewSignal("LodgerArrested_BadThought");
-        part.outSignalSurgeryViolation_AssaultColony = QuestGen.GenerateNewSignal("LodgerSurgeryViolation_AssaultColony");
-        part.outSignalSurgeryViolation_LeaveColony = QuestGen.GenerateNewSignal("LodgerSurgeryViolation_LeaveColony");
-        part.outSignalSurgeryViolation_BadThought = QuestGen.GenerateNewSignal("LodgerSurgeryViolation_BadThought");
-        part.outSignalLast_Destroyed = QuestGen.GenerateNewSignal("LastLodger_Destroyed");
-        part.outSignalLast_Arrested = QuestGen.GenerateNewSignal("LastLodger_Arrested");
-        part.outSignalLast_Kidnapped = QuestGen.GenerateNewSignal("LastLodger_Kidnapped");
-        part.outSignalLast_Recruited = QuestGen.GenerateNewSignal("LastLodger_Recruited");
-        part.outSignalLast_LeftMapAllHealthy = QuestGen.GenerateNewSignal("LastLodger_LeftMapAllHealthy");
-        part.outSignalLast_LeftMapAllNotHealthy = QuestGen.GenerateNewSignal("LastLodger_LeftMapAllNotHealthy");
-        part.outSignalLast_Banished = QuestGen.GenerateNewSignal("LastLodger_Banished");
+        QuestPart_RefugeeInteractions part = new()
+        {
+            inSignalEnable = QuestGen.slate.Get<string>("inSignal"),
+            inSignalDestroyed = lodgersDestroyedSignal,
+            inSignalArrested = lodgersArrestedSignal,
+            inSignalSurgeryViolation = QuestGenUtility.HardcodedSignalWithQuestID("lodgers.SurgeryViolation"),
+            inSignalKidnapped = lodgersKidnappedSignal,
+            inSignalRecruited = lodgerRecruitedSignal,
+            inSignalAssaultColony = assaultColonySignal,
+            inSignalLeftMap = lodgersLeftMapSignal,
+            inSignalBanished = lodgersBanished,
+            outSignalDestroyed_AssaultColony = QuestGen.GenerateNewSignal("LodgerDestroyed_AssaultColony"),
+            outSignalDestroyed_LeaveColony = QuestGen.GenerateNewSignal("LodgerDestroyed_LeaveColony"),
+            outSignalDestroyed_BadThought = QuestGen.GenerateNewSignal("LodgerDestroyed_BadThought"),
+            outSignalArrested_AssaultColony = QuestGen.GenerateNewSignal("LodgerArrested_AssaultColony"),
+            outSignalArrested_LeaveColony = QuestGen.GenerateNewSignal("LodgerArrested_LeaveColony"),
+            outSignalArrested_BadThought = QuestGen.GenerateNewSignal("LodgerArrested_BadThought"),
+            outSignalSurgeryViolation_AssaultColony = QuestGen.GenerateNewSignal("LodgerSurgeryViolation_AssaultColony"),
+            outSignalSurgeryViolation_LeaveColony = QuestGen.GenerateNewSignal("LodgerSurgeryViolation_LeaveColony"),
+            outSignalSurgeryViolation_BadThought = QuestGen.GenerateNewSignal("LodgerSurgeryViolation_BadThought"),
+            outSignalLast_Destroyed = QuestGen.GenerateNewSignal("LastLodger_Destroyed"),
+            outSignalLast_Arrested = QuestGen.GenerateNewSignal("LastLodger_Arrested"),
+            outSignalLast_Kidnapped = QuestGen.GenerateNewSignal("LastLodger_Kidnapped"),
+            outSignalLast_Recruited = QuestGen.GenerateNewSignal("LastLodger_Recruited"),
+            outSignalLast_LeftMapAllHealthy = QuestGen.GenerateNewSignal("LastLodger_LeftMapAllHealthy"),
+            outSignalLast_LeftMapAllNotHealthy = QuestGen.GenerateNewSignal("LastLodger_LeftMapAllNotHealthy"),
+            outSignalLast_Banished = QuestGen.GenerateNewSignal("LastLodger_Banished")
+        };
         part.pawns.AddRange(pawns);
         part.faction = faction;
         part.mapParent = map.Parent;

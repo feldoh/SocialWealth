@@ -109,7 +109,9 @@ public static class CertaintyPrefix
 
         // Calculate the scaling factor based on the colony's wealth
         float scalingFactor = ExtraLabelMouseAttachmentTranspiler.GetCertaintyChangeMultiplier();
+#if DEBUG
         Verse.Log.Message($"Scaling factor: {scalingFactor}. Applying to {currentCertainty} -> {value}. Diff: {certaintyDiff}");
+#endif
 
         float finalCertaintyDiff;
         // If the pawn's ideo is not the player's ideo
@@ -127,8 +129,9 @@ public static class CertaintyPrefix
         }
 
         value = currentCertainty - finalCertaintyDiff;
+#if DEBUG
         Verse.Log.Message($"Scaled certainty to {value} diff change: {certaintyDiff}->{finalCertaintyDiff} with scaling factor {scalingFactor}");
-
+#endif
         // Return true to allow the original method to execute
         return true;
     }

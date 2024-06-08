@@ -47,7 +47,7 @@ public class StatPart_Wealth : StatPart
     public override string ExplanationPart(StatRequest req)
     {
         return ShouldApply(req) && Find.AnyPlayerHomeMap is { } map
-            ? "Wealth: x" + WealthMultiplier(req, map).ToStringPercent()
+            ? "SocialWealth_WealthStatPart".Translate(WealthMultiplier(req, map).ToStringPercent())
             : "";
     }
 
