@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<Defs>
+
+    <ThingDef ParentName="BaseHumanMakeableGun">
+        <defName>SocialWealth_Gun_Revolver</defName>
+        <label>wealth-link revolver</label>
+        <description>An ancient gilded revolver. Wealth seems to add a palpable extra weight to every bullet shot from this gilded gun.</description>
+        <possessionCount>1</possessionCount>
+        <graphicData>
+            <texPath>Things/Item/Equipment/WeaponRanged/Revolver</texPath>
+            <graphicClass>Graphic_Single</graphicClass>
+        </graphicData>
+        <uiIconScale>1.4</uiIconScale>
+        <soundInteract>Interact_Revolver</soundInteract>
+        <statBases>
+            <WorkToMake>4000</WorkToMake>
+            <Mass>1.4</Mass>
+            <AccuracyTouch>0.80</AccuracyTouch>
+            <AccuracyShort>0.75</AccuracyShort>
+            <AccuracyMedium>0.45</AccuracyMedium>
+            <AccuracyLong>0.35</AccuracyLong>
+            <RangedWeapon_Cooldown>1.6</RangedWeapon_Cooldown>
+            <RangedWeapon_DamageMultiplier>1</RangedWeapon_DamageMultiplier>
+        </statBases>
+        <weaponTags>
+            <li>SimpleGun</li>
+            <li>Revolver</li>
+        </weaponTags>
+        <weaponClasses>
+            <li>RangedLight</li>
+        </weaponClasses>
+        <costList>
+            <Steel>30</Steel>
+            <ComponentIndustrial>2</ComponentIndustrial>
+            <Gold>1</Gold>
+        </costList>
+        <recipeMaker>
+            <skillRequirements>
+                <Crafting>3</Crafting>
+            </skillRequirements>
+            <displayPriority>400</displayPriority>
+        </recipeMaker>
+        <verbs>
+            <li>
+                <verbClass>Verb_Shoot</verbClass>
+                <hasStandardCommand>true</hasStandardCommand>
+                <defaultProjectile>Bullet_Revolver</defaultProjectile>
+                <warmupTime>0.3</warmupTime>
+                <range>25.9</range>
+                <soundCast>Shot_Revolver</soundCast>
+                <soundCastTail>GunTail_Light</soundCastTail>
+                <muzzleFlashScale>9</muzzleFlashScale>
+            </li>
+        </verbs>
+        <tools>
+            <li>
+                <label>grip</label>
+                <capacities>
+                    <li>Blunt</li>
+                </capacities>
+                <power>9</power>
+                <cooldownTime>2</cooldownTime>
+            </li>
+            <li>
+                <label>barrel</label>
+                <capacities>
+                    <li>Blunt</li>
+                    <li>Poke</li>
+                </capacities>
+                <power>9</power>
+                <cooldownTime>2</cooldownTime>
+            </li>
+        </tools>
+        <modExtensions>
+            <li Class="SocialWealth.CurveModExtension">
+                <curve>
+                    <points>
+                        <li>(0, 0.8)</li>
+                        <li>(1, 1)</li>
+                        <li>(2, 1.5)</li>
+                        <li>(4, 2)</li>
+                        <li>(8, 3)</li>
+                        <li>(16, 4)</li>
+                    </points>
+                </curve>
+            </li>
+        </modExtensions>
+    </ThingDef>
+</Defs>
