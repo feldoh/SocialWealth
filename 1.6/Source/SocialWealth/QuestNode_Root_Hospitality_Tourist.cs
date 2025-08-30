@@ -47,12 +47,16 @@ public class QuestNode_Root_Hospitality_Tourist : QuestNode
         int questDurationTicks = questDurationDays * 60000;
         List<FactionRelation> relations = [];
         foreach (Faction faction1 in Find.FactionManager.AllFactionsListForReading)
+        {
             if (!faction1.def.permanentEnemy)
+            {
                 relations.Add(new FactionRelation
                 {
                     other = faction1,
                     kind = FactionRelationKind.Neutral
                 });
+            }
+        }
 
         FactionGeneratorParms parms = new(FactionDefOf.OutlanderRefugee, hidden: true);
         if (ModsConfig.IdeologyActive)
@@ -125,7 +129,7 @@ public class QuestNode_Root_Hospitality_Tourist : QuestNode
                 quest.Letter(LetterDefOf.ThreatBig, text: "[mutinyLetterText]", label: "[mutinyLetterLabel]");
                 quest.SignalPass(outSignal: assaultColonySignal);
                 QuestGen_End.End(quest, QuestEndOutcome.Unknown);
-            }, debugLabel: "Betrayal (" + num.ToStringTicksToDays() + ")");
+            }, debugLabel: $"Betrayal ({num.ToStringTicksToDays()})");
         };
 
         if (Find.Storyteller.difficulty.allowViolentQuests)
@@ -136,8 +140,7 @@ public class QuestNode_Root_Hospitality_Tourist : QuestNode
             else
                 source.Add(Tuple.Create(0.25f, betrayalAction));
             source.Add(Tuple.Create(0.5f, () => { }));
-            Tuple<float, Action> result;
-            if (source.TryRandomElementByWeight(t => t.Item1, out result))
+            if (source.TryRandomElementByWeight(t => t.Item1, out Tuple<float, Action> result))
                 result.Item2();
         }
 

@@ -18,10 +18,9 @@ public static class ExtraLabelMouseAttachmentTranspiler
         {
             switch (found)
             {
-                case false when t.Calls(AccessTools.Method(typeof(GenText), nameof(GenText.ToStringPercent), new[]
-                {
+                case false when t.Calls(AccessTools.Method(typeof(GenText), nameof(GenText.ToStringPercent), [
                     typeof(float)
-                })):
+                ])):
                     found = true;
                     yield return new CodeInstruction(OpCodes.Call, AccessTools.Method(typeof(ExtraLabelMouseAttachmentTranspiler), nameof(GetWealthAdjustedCertaintyReduction)));
                     break;
@@ -68,10 +67,9 @@ public static class IdeoConversionAttemptTranspiler
         int callCount = 0;
         foreach (CodeInstruction t in instructions)
         {
-            if (t.Calls(AccessTools.Method(typeof(GenText), nameof(GenText.ToStringPercent), new[]
-                {
+            if (t.Calls(AccessTools.Method(typeof(GenText), nameof(GenText.ToStringPercent), [
                     typeof(float)
-                })))
+                ])))
             {
                 callCount++;
                 switch (callCount)

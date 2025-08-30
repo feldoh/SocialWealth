@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
+
 <LanguageData>
     <SocialWealth_SettingsCategory>Social Wealth</SocialWealth_SettingsCategory>
     <SocialWealth_WealthStatPart>Wealth: x{0}</SocialWealth_WealthStatPart>
@@ -8,6 +9,7 @@
     <SocialWealth_Settings_ChangeThreshold_Tip>Changes in ideo certainty below this fraction won't be wealth adjusted.\n\nThis is for performance as if set too low it happens on almost every tick\n\n0.01 is probably fine or even lower but simply adjust this up to have lower performance impact\n\nThe larger it is the fewer places wealth will affect ideo certainty.</SocialWealth_Settings_ChangeThreshold_Tip>
     <SocialWealth_LetterJoinOfferText>{PAWN_nameDef} has been awed by the wealth of {MAP_definite}. {PAWN_pronoun} cannot stand the idea of going back to their boring life and wishes to join you permanently.</SocialWealth_LetterJoinOfferText>
     <SocialWealth_SuccessRange>Threat Based Success Range: {0} - {1}</SocialWealth_SuccessRange>
+    <SocialWealth_ConvertOrDieInvalid>{PAWN_nameDef} is not under your control, a prisoner of the colony or is already your ideology.</SocialWealth_ConvertOrDieInvalid>
     <SocialWealth_AbilityIdeoConvertOrDieBreakdownLabel>Instant conversion chance: {0}</SocialWealth_AbilityIdeoConvertOrDieBreakdownLabel>
     <SocialWealth_Settings_ConvertOrDieMinChance>Convert or Die Min Success Chance: {0}</SocialWealth_Settings_ConvertOrDieMinChance>
     <SocialWealth_Settings_ConvertOrDieMinChance_Tip>Minimum chance of successful conversion, with their life on the line your chances should be better than 3 percent or whatever regardless of how poor your colony is.</SocialWealth_Settings_ConvertOrDieMinChance_Tip>

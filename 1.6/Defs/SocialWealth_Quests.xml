@@ -188,7 +188,7 @@
 
             </rulesStrings>
         </questContentRules>
-        <root Class="SocialWealth.QuestNode_Root_Hospitality_Tourist" />
+        <root Class="SocialWealth.QuestNode_Root_Hospitality_Tourist"/>
     </QuestScriptDef>
 
 </Defs>

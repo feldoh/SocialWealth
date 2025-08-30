@@ -197,7 +197,7 @@
                     <li>Violent</li>
                 </workTags>
             </li>
-            <li Class="CompProperties_AbilityShowTargetIdeoCertainty" />
+            <li Class="CompProperties_AbilityShowTargetIdeoCertainty"/>
         </comps>
         <verbProperties>
             <verbClass>Verb_CastAbilityTouch</verbClass>

@@ -4,7 +4,7 @@ using HarmonyLib;
 
 namespace SocialWealth;
 
-public class SocialWealthMod : Verse.Mod
+public class SocialWealthMod : Mod
 {
     public static Settings settings;
 
@@ -19,7 +19,7 @@ public class SocialWealthMod : Verse.Mod
         Harmony.DEBUG = true;
 #endif
 
-        Harmony harmony = new Harmony("feldoh.rimworld.SocialWealth.main");	
+        Harmony harmony = new("feldoh.rimworld.SocialWealth.main");
         harmony.PatchAll();
     }
 
